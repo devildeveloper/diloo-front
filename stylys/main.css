@@ -1,0 +1,68 @@
+/*! sanitize.css | CC0 Public Domain | github.com/jonathantneal/sanitize.css */
+pre,textarea{overflow:auto}
+[hidden],audio:not([controls]),template{display:none}
+details,main,summary{display:block}
+input[type=number]{width:auto}
+input[type=search]{-webkit-appearance:textfield}
+input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+progress{display:inline-block}
+small{font-size:75%}
+textarea{resize:vertical}
+[unselectable]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+*,::after,::before{box-sizing:inherit;border-style:solid;border-width:0}
+*{font-size:inherit;line-height:inherit;margin:0;padding:0}
+::after,::before{text-decoration:inherit;vertical-align:inherit}
+:root{-ms-overflow-style:-ms-autohiding-scrollbar;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;box-sizing:border-box;cursor:default;font:16px/1.5 sans-serif;text-rendering:optimizeLegibility}
+a{text-decoration:none}
+audio,canvas,iframe,img,svg,video{vertical-align:middle}
+button,input,select,textarea{background-color:transparent;color:inherit;font-family:inherit;font-style:inherit;font-weight:inherit;min-height:1.5em}
+code,kbd,pre,samp{font-family:monospace,monospace}
+nav ol,nav ul{list-style:none}
+select{-moz-appearance:none;-webkit-appearance:none}
+select::-ms-expand{display:none}
+select::-ms-value{color:currentColor}
+table{border-collapse:collapse;border-spacing:0}
+::-moz-selection{background-color:#B3D4FC;text-shadow:none}
+::selection{background-color:#B3D4FC;text-shadow:none}
+@media screen{[hidden~=screen]{display:inherit}
+[hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}
+}
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?8ng1zc');
+	src:url('../fonts/icomoon.eot?#iefix8ng1zc') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?8ng1zc') format('truetype'),
+		url('../fonts/icomoon.woff?8ng1zc') format('woff'),
+		url('../fonts/icomoon.svg?8ng1zc#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+	content: "\e601";
+}
+.icon-triangle-left:before {
+	content: "\e602";
+}
+.icon-triangle-right:before {
+	content: "\e600";
+}
+.icon-clock:before {
+	content: "\e94e";
+}
+
+.mid{width:50% !important}.green{color:#2d8e37 !important}.full{width:100% !important}.hide{display:none !important}.visible{display:inline-block !important}.hover{background-color:#eee !important}li{list-style-type:none}button{cursor:pointer}.history{font-family:'Open Sans',sans-serif;background-color:#f0f0f0;font-size:16px;line-height:20px;padding-top:10px;padding-left:10px;padding-bottom:10px;min-width:1500px;}.history>header h1{border-bottom:1px solid #b8b8b8;padding-bottom:10px;}.history>header h1>*{display:inline-block;vertical-align:middle}.history>header h1 .title{font-size:1.2rem;line-height:1.8rem;}.history>header h1 .title span{color:#2a2a2a;font-weight:400;}.history>header h1 .title span:first-child{margin-right:10px}.history>header h1 aside{float:right;}.history>header h1 aside p{font-size:.9rem;line-height:1.8rem;font-weight:400;padding-right:10px}.history .info{margin-top:10px;}.history .info>*{display:inline-block;height:30px}.history .info form>*{height:30px}.history .info form input[type="text"]{background-color:#fff}.history .info form button{border:1px solid #b8b8b8}.history .info .pagination{display:inline-block;float:right;padding-right:10px;}.history .info .pagination>*{display:inline-block}.history .info .pagination p{font-size:.9rem}.history .info .pagination .buttons{margin-left:10px;}.history .info .pagination .buttons button{width:50px;height:30px;border:1px solid #b8b8b8;display:inline-block;text-align:center;font-size:1.2rem;background-color:#f6f6f6;color:#c9c9c9;}.history .info .pagination .buttons button.active{color:#292929}.history .content{font-size:.8rem;padding-top:10px;padding-right:5px;}.history .content>*{display:inline-block;vertical-align:top}.history .content .table{width:100%;}.history .content .table header{margin-bottom:3px;background-color:#fff;border:1px solid #afafaf;border-right:0;}.history .content .table header p{color:#afafaf;padding:5px;text-transform:capitalize;}.history .content .table header p:first-child{padding-left:15px}.history .content .table table{width:100%}.history .content .table p{display:inline-block;text-align:center}.history .content .table .c1{width:18%;text-align:left}.history .content .table .c2{width:15%}.history .content .table .c3{width:15%}.history .content .table .c4{width:15%}.history .content .table .c5{width:35%}.history .content .table tr{background-color:#fff;border:1px solid #afafaf;border-right:0;}.history .content .table tr:first-child{margin-bottom:5px}.history .content .table tr:hover{background-color:#eee;cursor:pointer;}.history .content .table tr:hover td{color:#2a2a2a}.history .content .table tr td{color:#2a2a2a;padding:5px;text-align:center;}.history .content .table tr td:first-child{padding-left:15px;text-align:left}.history .content .ticketInfo{border:1px solid #afafaf;background-color:#fff;height:800px;display:none;}.history .content .ticketInfo button{background-color:#e5e5e5;height:30px;border:1px solid #f0f0f0;cursor:pointer;padding-left:10px;padding-right:10px;}.history .content .ticketInfo button.active{background-color:#ccc}.history .content .ticketInfo button.circle{width:30px;margin-left:10px;border-radius:50%;padding:0}.history .content .ticketInfo header{border-bottom:1px solid #afafaf;padding:10px;}.history .content .ticketInfo header>*{display:inline-block}.history .content .ticketInfo header aside{float:right}.history .content .ticketInfo section .messages li{border-bottom:1px solid #ccc;border-style:dashed;margin-top:20px;padding-bottom:10px;}.history .content .ticketInfo section .messages li .author,.history .content .ticketInfo section .messages li .body{padding-left:20px}.history .content .ticketInfo section .messages li .author,.history .content .ticketInfo section .messages li .time{height:30px;line-height:30px;display:inline-block}.history .content .ticketInfo section .messages li .time{float:right;padding-right:20px;float:right}.history .content .ticketInfo section .messages li .author{font-weight:bold;text-transform:capitalize}

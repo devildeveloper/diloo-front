@@ -1,0 +1,188 @@
+@require 'sanitize.min.css'
+@require 'icomoon.css'
+$grayBg = #F0F0F0
+.mid
+	width 50% !important
+.green
+	color #2D8E37 !important
+.full
+	width 100% !important	
+.hide
+	display none !important
+.visible
+	display inline-block !important
+.hover
+	background-color #EEEEEE !important	
+li
+	list-style-type none
+button
+	cursor pointer
+.history
+	font-family 'Open Sans', sans-serif
+	background-color $grayBg
+	font-size 16px
+	line-height 20px
+	padding-top 10px
+	padding-left 10px
+	padding-bottom 10px
+	min-width 1500px
+	&>header
+		h1
+			border-bottom 1px solid #B8B8B8
+			padding-bottom 10px
+			&>*
+				display inline-block
+				vertical-align middle
+			.title
+				font-size 1.2rem
+				line-height 1.8rem
+				span
+					color #2A2A2A
+					font-weight 400
+					&:first-child
+						margin-right 10px
+			aside
+				float right
+				p
+					font-size .9rem
+					line-height 1.8rem
+					font-weight 400
+					padding-right 10px
+	.info
+		margin-top 10px
+		&>*
+			display inline-block
+			height 30px
+		form
+			&>*
+				height 30px
+			input[type="text"]
+				background-color white
+			button
+				border 1px solid #B8B8B8
+		.pagination
+			display inline-block
+			float right
+			padding-right 10px
+			&>*
+				display inline-block
+			p
+				font-size .9rem
+			.buttons
+				margin-left 10px
+				button
+					width 50px
+					height 30px
+					border 1px solid #B8B8B8
+					display inline-block
+					text-align center
+					font-size 1.2rem
+					background-color #F6F6F6
+					color #C9C9C9
+					&.active
+						color #292929
+	.content
+		font-size .8rem
+		padding-top 10px
+		padding-right 5px
+		&>*
+			display inline-block
+			vertical-align top
+		.table
+			width 100%
+			header
+				margin-bottom 3px
+				background-color white
+				border 1px solid #AFAFAF
+				border-right 0
+				p
+					color #AFAFAF
+					padding 5px
+					text-transform capitalize
+					&:first-child
+						padding-left 15px
+			table
+				width 100%
+			p
+				display inline-block
+				text-align center
+			.c1
+				width 18%
+				//min-width 100px
+				text-align left
+			.c2
+				width 15%
+				//min-width 80px
+			.c3
+				width 15%
+				//min-width 80px
+			.c4
+				width 15%
+				//min-width 80px
+			.c5
+				width 35%
+				//min-width 200px
+			tr
+				background-color white
+				border 1px solid #AFAFAF
+				border-right 0
+				&:first-child
+					margin-bottom 5px
+				&:hover
+					background-color #EEEEEE
+					cursor pointer
+					td
+						color #2A2A2A
+				td
+					color #2A2A2A
+					padding 5px
+					text-align center
+					&:first-child
+						padding-left 15px
+						text-align left
+		.ticketInfo
+			border 1px solid #AFAFAF
+			background-color white
+			height 800px
+			display none
+			button
+				background-color #E5E5E5
+				height 30px
+				border 1px solid $grayBg
+				cursor pointer
+				padding-left 10px
+				padding-right 10px
+				&.active
+					background-color #CCCCCC
+				&.circle
+					width 30px
+					margin-left 10px
+					border-radius 50%	
+					padding 0
+			header
+				border-bottom 1px solid #AFAFAF
+				padding 10px
+				&>*
+					display inline-block
+				aside
+					float right
+			section
+				.messages
+					li
+						border-bottom 1px solid #CCC
+						border-style dashed
+						margin-top 20px
+						padding-bottom 10px
+						.author,.body
+							padding-left 20px
+						.author,.time
+							height 30px
+							line-height 30px
+							display inline-block
+						.time
+							float right
+							padding-right 20px
+							float right
+						.author
+							font-weight bold
+							text-transform capitalize

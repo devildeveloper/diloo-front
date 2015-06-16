@@ -1,0 +1,57 @@
+extends layout
+block content
+	main#operator-home(ng-app="diloo")
+		.history(ng-controller="TicketController")
+			header
+				h1
+					.title
+						span.icon-clock
+						span Historial de chats
+					aside
+						p Total de chats: {{tickets.total}}
+			.info
+				form
+					input(type="text",name="search")
+					button(type="submit") Borrar búsqueda
+				.pagination
+					p {{tickets.total}} resultados para, Página {{jump  +  1 }} de {{ tickets.total <= 0 ? 1 : tickets.total   }} 
+					.buttons
+						button.icon-triangle-left(type="button",action="prev",ng-click="paginationPrev()",ng-class="{'active': jump > 0 }")
+						button.icon-triangle-right(type="button",action="next",ng-click="paginationNext()",ng-class="{'active': tickets.total / 25  > 1 }")
+			.content
+				.table(ng-class="{'mid':ticketStatus == true,'full':ticketStatus==false}")
+					header
+						p.c1 Nombre Cliente
+						p.c2 Agente
+						p.c3 calificación
+						p.c4 tiempo
+						p.c5 mensajes
+					table
+						tr(ng-repeat="ticket in tickets.data",ng-click="getMessages(ticket)")
+							td.c1
+								p {{ticket.user}}
+							td.c2
+								p {{ticket.operator}}
+							td.c3
+								p 6 estrellas
+							td.c4
+								p {{ticket.tiempo}}
+							td.c5
+								p {{ticket.message}}
+				.ticketInfo(ng-class="{'mid visible':ticketStatus == true,'hide':ticketStatus==false}")
+					header
+						.buttons
+							button.active(type="button",ng-click="showMessages()") Transcripción
+							button(type="button",ng-click="showUser()") Informacion de Usuario
+						aside
+							button(type="button") Exportar Transcripción
+							button.circle.icon-close(type="button",ng-click="closeOpenTicket()")
+					section
+						.messages(ng-show="messages.show")
+							ul
+								li(ng-repeat="message in messages.data")
+									p.author(ng-class="{'green':message.type=='sender'}") {{message.author}}
+									p.time {{message.createdAt | date : 'h:m a'}}
+									p.body {{message.body}}
+						.user-info(ng-show="user.show")
+							p {{user.data.nombres}}

@@ -26,6 +26,21 @@ button
 	padding-left 10px
 	padding-bottom 10px
 	min-width 1500px
+	form
+		&>*
+			height 30px
+			line-height 30px
+			display inline-block
+			vertical-align middle
+		input[type="text"]
+			border 1px solid lightgray
+			padding-left 10px
+			font-size .8rem
+			&+button
+				border-left 0
+				padding-left 10px
+				padding-right 10px
+				font-size .8rem
 	&>header
 		h1
 			border-bottom 1px solid #B8B8B8
@@ -168,7 +183,9 @@ button
 					float right
 			section
 				.messages
-					li
+					table
+						width 100%
+					.item
 						border-bottom 1px solid #CCC
 						border-style dashed
 						margin-top 20px

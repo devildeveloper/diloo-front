@@ -11,8 +11,8 @@ block content
 						p Total de chats: {{tickets.total}}
 			.info
 				form
-					input(type="text",name="search")
-					button(type="submit") Borrar búsqueda
+					input(type="text",name="search",placeholder="Buscar conversación")
+					button(type="submit") Buscar
 				.pagination
 					p {{tickets.total}} resultados para, Página {{jump  +  1 }} de {{ tickets.total <= 0 ? 1 : tickets.total   }} 
 					.buttons
@@ -44,14 +44,15 @@ block content
 							button.active(type="button",ng-click="showMessages()") Transcripción
 							button(type="button",ng-click="showUser()") Informacion de Usuario
 						aside
-							button(type="button") Exportar Transcripción
+							button(type="button",ng-click="exportToExcel('exportable')") Exportar Transcripción
 							button.circle.icon-close(type="button",ng-click="closeOpenTicket()")
 					section
-						.messages(ng-show="messages.show")
-							ul
-								li(ng-repeat="message in messages.data")
-									p.author(ng-class="{'green':message.type=='sender'}") {{message.author}}
-									p.time {{message.createdAt | date : 'h:m a'}}
-									p.body {{message.body}}
+						.messages#exportable(ng-show="messages.show")
+							table
+								tr.item(ng-repeat="message in messages.data")
+									td
+										p.author(ng-class="{'green':(message.type=='sender' || message.type=='SENDER')}") {{message.author}}
+										p.time {{message.createdAt | date : 'h:m a'}}
+										p.body {{message.body}}
 						.user-info(ng-show="user.show")
 							p {{user.data.nombres}}

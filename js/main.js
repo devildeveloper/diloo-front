@@ -111,7 +111,6 @@ function homeController($scope,$sails){
 		pendents : [] ,
 		open : [] ,
 		getPendents:function(){
-			console.log('in')
 			$sails.get('/ticket/getAreaTickets',{companyId:1,areaId:1})
 					.success(function(data,status,headers,jwr){
 						console.log('listando pendientes del área')
@@ -125,7 +124,7 @@ function homeController($scope,$sails){
 					});
 		},
 		getOpenTickets:function(){
-			$sails.get('/ticket/getMyTickets',{companyId:1,operatorId:1,areaId:1})
+			$sails.get('/ticket/getMyTickets',{companyId:1,operatorId:1,areaId:1,web:'true'})
 					.success(function(data,status,headers,jwr){
 						console.log('obteniendo tickets');
 						var tokens=data.tickets;
@@ -143,13 +142,14 @@ function homeController($scope,$sails){
 			if(counter == length) return;
 			var self = tokens[counter];
 			self.messages=[];
+			console.log('pendientes')
 			$sails.get('/user/getUserInfo',{userId:self.user})
 					.success(function(data,status,headers,jwr){
 		            	self.userInfo=data.user;
 						//uniendolo al room del ticket para que reciba notificaciones
 						$sails.get('/message/join',{room:self.id})
 						        .success(function(data,status,headers,jwr){
-						                console.log(data.msg);
+						                console.log(data);
 						              })
 						        .error(function(data,status,headers,jwr){
 						        	console.log(status);
@@ -158,8 +158,6 @@ function homeController($scope,$sails){
 						        .success(function(messages,status,headers,jwr){
 						            self.messages=messages.tickets;
 						            //agregando la data a pendientes
-						            //console.log(self);
-						            //$scope.token = self; 
 						            if(self.status == 0) {
 						            	$scope.tickets.pendents.push(self);
 						            }else{
@@ -193,8 +191,10 @@ $(document).on('ready',init);
 
 function init(){
 	resize();
+	setHeight()
 	$(window).resize(function(){
 		resize();
+		setHeight()
 	});
 }
 
@@ -202,4 +202,27 @@ function resize(){
 	$('.history').css({
 		'width':(window.innerWidth - 180)+'px'
 	})
+	var w = window.innerWidth;
+	$('#operator-home .open').css({
+		'width':(w-290)+'px'
+	});
 }
+function setHeight(){
+	var h = window.innerHeight;
+	$('#operator-home .in-comming ul').css({
+		'height':(h-76)+'px'
+	});
+	$(".chat-open").css({
+		'height':(h-30 -76 )+'px'
+	});
+	$("#operator-home .open > .elements .chat-open").css({
+		//'margin-top': '-'+(h-103)+'px'
+		'margin-top':'0px'
+	});
+	$("#operator-home .open > .elements .chat-open .messages").css({
+		'height':(h-310)+'px'
+	});
+}
+setTimeout(function(){
+  setHeight();
+},1000)

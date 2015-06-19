@@ -89,4 +89,31 @@ block content
 				header
 					p Chat abiertos
 				.elements
+					.chat-open(data-ticket="{{open.id}}",ng-repeat="open in tickets.open")
+						header
+							.user-photo
+								img(ng-src="{{open.userInfo.photo}}")
+							.user-name
+								p {{open.userInfo.nombres}}
+								span {{open.userInfo.phone}}
+								span {{open.userInfo.email}}
+							.window-actions
+								a.min(href="#")
+									img(ng-src="../img/_.png")
+								a.close(href="#",data-key="{{open.id}}")
+									img(ng-src="../img/x.png")
+						.messages
+							ul(data-key="open.id")
+								li(ng-repeat="message in open.messages",class="{{message.type | lowercase}}")
+									p{{message.body}}
+						.send
+							form(data-ticket="{{open.id}}")
+								textarea(name="message",placeholder="escribe una respuesta")
+								fieldset
+									input(type="file",name="file")
+									span.icon-paper-clip
+									p Pulsa "enter" para enviar
 				.minificados
+					.chat-min(data-ticket="{{open.id}}",ng-repeat="open in tickets.open")
+						a(href="#",data-key="{{open.id}}")
+							img(ng-src="{{open.userInfo.photo}}",alt="{{open.userInfo.nombres}}",title="{{open.userInfo.nombres}}")

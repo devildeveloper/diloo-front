@@ -16,8 +16,10 @@ angular.module('diloo',['ngSails'])
 	            }
 	        };
 	    })		
-		.controller('TicketController',TicketController);
-function TicketController($scope,$sails,Excel,$timeout){
+		.controller('historyController',historyController)
+		.controller('homeController',homeController);
+
+function historyController($scope,$sails,Excel,$timeout){
 	$scope.tickets={
 		data: [],
 		total:0
@@ -66,6 +68,17 @@ function TicketController($scope,$sails,Excel,$timeout){
 		//changing ticket state
 		$scope.ticketStatus=true;
 	}
+	$scope.findByUser=function(userName){
+		$sails.get("/ticket/findByUser",{areaId:1,companyId:1,skip:$scope.jump,userName:userName})
+			.success(function(data,status,headers,jwr){
+				$scope.tickets.data = data.tickets;
+				$scope.tickets.total= data.len;
+				console.log(data)
+			})
+			.error(function(data,status,headers,jwr){
+				console.log(status)
+			});
+	}
 	$scope.closeOpenTicket=function(){
 		$scope.ticketStatus=!$scope.ticketStatus;
 	}
@@ -87,8 +100,106 @@ function TicketController($scope,$sails,Excel,$timeout){
 		$scope.loadMessages();
 		console.log($scope.jump)
 	}
-  $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+ 	$scope.exportToExcel=function(tableId){ // ex: '#my-table'
         var exportHref=Excel.tableToExcel(tableId,'sheet name');
             $timeout(function(){location.href=exportHref;},100); // trigger download
     }
+}
+function homeController($scope,$sails){
+	$scope.room='1:1';
+	$scope.tickets = {
+		pendents : [] ,
+		open : [] ,
+		getPendents:function(){
+			console.log('in')
+			$sails.get('/ticket/getAreaTickets',{companyId:1,areaId:1})
+					.success(function(data,status,headers,jwr){
+						console.log('listando pendientes del área')
+						var tokens=data.tickets;
+						var length = tokens.length;
+						var counter = 0;
+		                $scope.user.getUserInfo(counter,length,tokens)
+					})
+					.error(function(data,status,headers,jwr){
+						console.log(status);
+					});
+		},
+		getOpenTickets:function(){
+			$sails.get('/ticket/getMyTickets',{companyId:1,operatorId:1,areaId:1})
+					.success(function(data,status,headers,jwr){
+						console.log('obteniendo tickets');
+						var tokens=data.tickets;
+						var length = tokens.length;
+						var counter = 0;
+						$scope.user.getUserInfo(counter,length,tokens);					
+					})
+					.error(function(data,status,headers,jwr){
+						console.log(status);
+					})
+		}
+	};
+	$scope.user={
+		getUserInfo:function(counter,length,tokens){
+			if(counter == length) return;
+			var self = tokens[counter];
+			self.messages=[];
+			$sails.get('/user/getUserInfo',{userId:self.user})
+					.success(function(data,status,headers,jwr){
+		            	self.userInfo=data.user;
+						//uniendolo al room del ticket para que reciba notificaciones
+						$sails.get('/message/join',{room:self.id})
+						        .success(function(data,status,headers,jwr){
+						                console.log(data.msg);
+						              })
+						        .error(function(data,status,headers,jwr){
+						        	console.log(status);
+						        })
+						$sails.get('/message/gmft',{ticket:self.id})
+						        .success(function(messages,status,headers,jwr){
+						            self.messages=messages.tickets;
+						            //agregando la data a pendientes
+						            //console.log(self);
+						            //$scope.token = self; 
+						            if(self.status == 0) {
+						            	$scope.tickets.pendents.push(self);
+						            }else{
+						            	$scope.tickets.open.push(self);
+						            }
+						            
+						        })
+						       	.error(function(data,status,headers,jwr){
+						       		console.log(status);
+						       	}) 
+					}).error(function(data,status,headers,jwr){
+						console.log(status);
+					})
+			counter++;
+			$scope.user.getUserInfo(counter,length,tokens)
+		}
+	}
+	$scope.joinArea=function(){
+		$sails.get('/ticket/join',{room:$scope.room},function(data){
+		                console.log('uniendose al área ' + $scope.room);
+		                console.log(data.msg);
+					});		
+	}
+	//lauching
+	$scope.joinArea();
+	$scope.tickets.getPendents();
+	$scope.tickets.getOpenTickets();
+}
+
+$(document).on('ready',init);
+
+function init(){
+	resize();
+	$(window).resize(function(){
+		resize();
+	});
+}
+
+function resize(){
+	$('.history').css({
+		'width':(window.innerWidth - 180)+'px'
+	})
 }

@@ -1,0 +1,92 @@
+extends layout
+block content
+	div(data-component="close-chat")
+		.content
+			.close
+				p.exit x
+			.wrap
+				p ¿ Desea finalizar el chat?
+				button.exit Cancelar
+				button.end Finalizar
+	main#operator-home(ng-app="diloo")
+		.operator
+			header
+				img(src="/img/logo_dilo.png")
+				img(src="/img/hamburguer.png")
+			.user-menu
+				.user-img
+					img(src="/img/user_pic.jpg")
+				.user-status
+					p Diego
+					.select
+						.selected Conectado
+						.wrapper
+							.option.conectado Conectado
+							.option.ausente Ausente
+							.option.invisible Invisible
+							p.option.salir Salir
+			nav
+				ul
+					li
+						a.active(href="#")
+							span.icon-home
+							span Inicio
+					li
+						a(href="#")
+							span.icon-clock
+							span Historial
+					li
+						a(href="#")
+							span.icon-stats-bars
+							span Estadísticas
+					li.line
+						a
+							span
+								img(src="/img/linea.png")
+				ul
+					li.title
+						p ADMINISTRACIÓN
+					li
+						a(href="#")
+							span.icon-user
+							span Agentes
+					li
+						a(href="#")
+							span.icon-sitemap
+							span Áreas
+					li
+						a(href="#")
+							span.icon-indent-increase
+							span Métodos abreviados
+					li.line
+						a
+							span
+								img(src="/img/linea.png")
+				ul
+					li.title
+						p CONFIGURACIÓN
+					li
+						a(href="#")
+							span.icon-office
+							span Perfil empresa
+					li
+						a(href="#")
+							span.icon-credit-card2
+							span Cuenta
+
+		#content(ng-controller="homeController")
+			.in-comming
+				header
+					p Entrantes
+				ul
+					li(ng-repeat="pendent in tickets.pendents")
+						a(data-key="{{pendent.id}}")
+							img(ng-src="{{pendent.userInfo.photo}}",alt="{{pendent.userInfo.nombres}}",title="{{pendent.userInfo.nombres}}")
+							.counter
+								p {{pendent.messages.length}}
+
+			.open
+				header
+					p Chat abiertos
+				.elements
+				.minificados

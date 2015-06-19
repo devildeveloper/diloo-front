@@ -1,7 +1,71 @@
 extends layout
 block content
 	main#operator-home(ng-app="diloo")
-		.history(ng-controller="TicketController")
+		.operator
+			header
+				img(src="../img/logo_dilo.png")
+				img(src="../img/hamburguer.png")
+			.user-menu
+				.user-img
+					img(src="../img/user_pic.jpg")
+				.user-status
+					p Diego
+					.select
+						.selected Conectado
+						.wrapper
+							.option.conectado Conectado
+							.option.ausente Ausente
+							.option.invisible Invisible
+							p.option.salir Salir
+			nav
+				ul
+					li
+						a(href="#")
+							span.icon-home
+							span Inicio
+					li
+						a.active(href="#")
+							span.icon-clock
+							span Historial
+					li
+						a(href="#")
+							span.icon-stats-bars
+							span Estadísticas
+					li.line
+						a
+							span
+								img(src="../img/linea.png")
+				ul
+					li.title
+						p ADMINISTRACIÓN
+					li
+						a(href="#")
+							span.icon-user
+							span Agentes
+					li
+						a(href="#")
+							span.icon-sitemap
+							span Áreas
+					li
+						a(href="#")
+							span.icon-indent-increase
+							span Métodos abreviados
+					li.line
+						a
+							span
+								img(src="/img/linea.png")
+				ul
+					li.title
+						p CONFIGURACIÓN
+					li
+						a(href="#")
+							span.icon-office
+							span Perfil empresa
+					li
+						a(href="#")
+							span.icon-credit-card2
+							span Cuenta
+		.history(ng-controller="historyController")
 			header
 				h1
 					.title
@@ -10,8 +74,8 @@ block content
 					aside
 						p Total de chats: {{tickets.total}}
 			.info
-				form
-					input(type="text",name="search",placeholder="Buscar conversación")
+				form(ng-submit="findByUser(userName)")
+					input(type="text",name="search",placeholder="Buscar conversación",ng-model="userName")
 					button(type="submit") Buscar
 				.pagination
 					p {{tickets.total}} resultados para, Página {{jump  +  1 }} de {{ tickets.total <= 0 ? 1 : tickets.total   }} 

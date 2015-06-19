@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?8ng1zc');
-	src:url('../fonts/icomoon.eot?#iefix8ng1zc') format('embedded-opentype'),
-		url('../fonts/icomoon.ttf?8ng1zc') format('truetype'),
-		url('../fonts/icomoon.woff?8ng1zc') format('woff'),
-		url('../fonts/icomoon.svg?8ng1zc#icomoon') format('svg');
+	src:url('../fonts/icomoon.eot?hpkt0i');
+	src:url('../fonts/icomoon.eot?#iefixhpkt0i') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?hpkt0i') format('truetype'),
+		url('../fonts/icomoon.woff?hpkt0i') format('woff'),
+		url('../fonts/icomoon.svg?hpkt0i#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,15 +23,36 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-close:before {
-	content: "\e601";
-}
-.icon-triangle-left:before {
-	content: "\e602";
-}
-.icon-triangle-right:before {
+.icon-sitemap:before {
 	content: "\e600";
 }
 .icon-clock:before {
-	content: "\e94e";
+	content: "\f046";
+}
+.icon-credit-card:before {
+	content: "\f045";
+}
+.icon-triangle-left:before {
+	content: "\f044";
+}
+.icon-triangle-right:before {
+	content: "\f05a";
+}
+.icon-home:before {
+	content: "\e900";
+}
+.icon-office:before {
+	content: "\e903";
+}
+.icon-credit-card2:before {
+	content: "\e93f";
+}
+.icon-user:before {
+	content: "\e971";
+}
+.icon-stats-bars:before {
+	content: "\e99c";
+}
+.icon-indent-increase:before {
+	content: "\ea7b";
 }
